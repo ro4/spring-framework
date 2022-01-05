@@ -23,7 +23,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -65,15 +64,7 @@ public class ReflectivePropertyAccessor implements PropertyAccessor {
 
 	private static final Set<Class<?>> ANY_TYPES = Collections.emptySet();
 
-	private static final Set<Class<?>> BOOLEAN_TYPES;
-
-	static {
-		Set<Class<?>> booleanTypes = new HashSet<>(4);
-		booleanTypes.add(Boolean.class);
-		booleanTypes.add(Boolean.TYPE);
-		BOOLEAN_TYPES = Collections.unmodifiableSet(booleanTypes);
-	}
-
+	private static final Set<Class<?>> BOOLEAN_TYPES = Set.of(Boolean.class, Boolean.TYPE);
 
 	private final boolean allowWrite;
 
@@ -330,17 +321,6 @@ public class ReflectivePropertyAccessor implements PropertyAccessor {
 		}
 
 		throw new AccessException("Neither setter method nor field found for property '" + name + "'");
-	}
-
-	/**
-	 * Get the last read invoker pair.
-	 * @deprecated as of 4.3.15 since it is not used within the framework anymore
-	 */
-	@Deprecated
-	@Nullable
-	public Member getLastReadInvokerPair() {
-		InvokerPair lastReadInvoker = this.lastReadInvokerPair;
-		return (lastReadInvoker != null ? lastReadInvoker.member : null);
 	}
 
 
