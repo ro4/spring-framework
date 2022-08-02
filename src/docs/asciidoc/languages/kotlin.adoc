@@ -30,6 +30,8 @@ and https://search.maven.org/artifact/org.jetbrains.kotlin/kotlin-reflect[`kotli
 to be present on the classpath. They are provided by default if you bootstrap a Kotlin project on
 https://start.spring.io/#!language=kotlin&type=gradle-project[start.spring.io].
 
+WARNING: Kotlin https://kotlinlang.org/docs/inline-classes.html[inline classes] are not yet supported.
+
 NOTE: The https://github.com/FasterXML/jackson-module-kotlin[Jackson Kotlin module] is required
 for serializing or deserializing JSON data for Kotlin classes with Jackson, so make sure to add the
 `com.fasterxml.jackson.module:jackson-module-kotlin` dependency to your project if you have such need.
@@ -42,7 +44,7 @@ Kotlin https://kotlinlang.org/docs/reference/extensions.html[extensions] provide
 to extend existing classes with additional functionality. The Spring Framework Kotlin APIs
 use these extensions to add new Kotlin-specific conveniences to existing Spring APIs.
 
-The {docs-spring-framework}/kdoc-api/spring-framework/[Spring Framework KDoc API] lists
+The {docs-spring-framework}/kdoc-api/[Spring Framework KDoc API] lists
 and documents all available Kotlin extensions and DSLs.
 
 NOTE: Keep in mind that Kotlin extensions need to be imported to be used. This means,
